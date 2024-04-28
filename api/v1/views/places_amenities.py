@@ -13,7 +13,7 @@ from flasgger.utils import swag_from
                  strict_slashes=False)
 @swag_from('documentation/place_amenity/get_places_amenities.yml',
            methods=['GET'])
-def get_place_amenities(place_id):
+def get_place_frm_amenities(place_id):
     """
     Retrieves the list of all Amenity objects of a Place
     """
@@ -35,7 +35,7 @@ def get_place_amenities(place_id):
                  methods=['DELETE'], strict_slashes=False)
 @swag_from('documentation/place_amenity/delete_place_amenities.yml',
            methods=['DELETE'])
-def delete_place_amenity(place_id, amenity_id):
+def delete_place_frm_amenity(place_id, amenity_id):
     """
     Deletes a Amenity object of a Place
     """
