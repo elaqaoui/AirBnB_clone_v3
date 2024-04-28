@@ -25,17 +25,17 @@ def get_place_amenities(place_id):
     if environ.get('HBNB_TYPE_STORAGE') == "db":
         amenities = [amenity.to_dict() for amenity in place.amenities]
     else:
-        amenities = [storage.get(Amenity, amenity_ident).to_dict()
-                     for amenity_ident in place.amenity_ids]
+        amenities = [storage.get(Amenity, amenity_id).to_dict()
+                     for amenity_id in place.amenity_ids]
 
     return jsonify(amenities)
 
 
-@app_views.route('/places/<place_id>/amenities/<amenity_ident>',
+@app_views.route('/places/<place_id>/amenities/<amenity_id>',
                  methods=['DELETE'], strict_slashes=False)
 @swag_from('documentation/place_amenity/delete_place_amenities.yml',
            methods=['DELETE'])
-def delete_place_amenity(place_id, amenity_ident):
+def delete_place_amenity(place_id, amenity_id):
     """
     Deletes a Amenity object of a Place
     """
@@ -44,7 +44,7 @@ def delete_place_amenity(place_id, amenity_ident):
     if not place:
         abort(404)
 
-    amenity = storage.get(Amenity, amenity_ident)
+    amenity = storage.get(Amenity, amenity_id)
 
     if not amenity:
         abort(404)
@@ -54,19 +54,19 @@ def delete_place_amenity(place_id, amenity_ident):
             abort(404)
         place.amenities.remove(amenity)
     else:
-        if amenity_ident not in place.amenity_ids:
+        if amenity_id not in place.amenity_ids:
             abort(404)
-        place.amenity_ids.remove(amenity_ident)
+        place.amenity_ids.remove(amenity_id)
 
     storage.save()
     return make_response(jsonify({}), 200)
 
 
-@app_views.route('/places/<place_id>/amenities/<amenity_ident>', methods=['POST'],
+@app_views.route('/places/<place_id>/amenities/<amenity_id>', methods=['POST'],
                  strict_slashes=False)
 @swag_from('documentation/place_amenity/post_place_amenities.yml',
            methods=['POST'])
-def post_place_amenity(place_id, amenity_ident):
+def post_place_amenity(place_id, amenity_id):
     """
     Link a Amenity object to a Place
     """
@@ -75,7 +75,7 @@ def post_place_amenity(place_id, amenity_ident):
     if not place:
         abort(404)
 
-    amenity = storage.get(Amenity, amenity_ident)
+    amenity = storage.get(Amenity, amenity_id)
 
     if not amenity:
         abort(404)
@@ -86,10 +86,10 @@ def post_place_amenity(place_id, amenity_ident):
         else:
             place.amenities.append(amenity)
     else:
-        if amenity_ident in place.amenity_ids:
+        if amenity_id in place.amenity_ids:
             return make_response(jsonify(amenity.to_dict()), 200)
         else:
-            place.amenity_ids.append(amenity_ident)
+            place.amenity_ids.append(amenity_id)
 
     storage.save()
     return make_response(jsonify(amenity.to_dict()), 201)
