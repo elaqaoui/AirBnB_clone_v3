@@ -11,7 +11,7 @@ from flasgger.utils import swag_from
 @app_views.route('/states/<state_id>/cities', methods=['GET'],
                  strict_slashes=False)
 @swag_from('documentation/city/cities_by_state.yml', methods=['GET'])
-def get_cities(state_id):
+def get_all_cities(state_id):
     """
     Retrieves the list of all cities objects
     of a specific State, or a specific city
@@ -27,8 +27,8 @@ def get_cities(state_id):
 
 
 @app_views.route('/cities/<city_id>/', methods=['GET'], strict_slashes=False)
-@swag_from('documentation/city/get_city.yml', methods=['GET'])
-def get_city(city_id):
+@swag_from('documentation/city/get_all_city.yml', methods=['GET'])
+def get_all_city(city_id):
     """
     Retrieves a specific city based on id
     """
@@ -77,8 +77,8 @@ def post_city(state_id):
 
 
 @app_views.route('/cities/<city_id>', methods=['PUT'], strict_slashes=False)
-@swag_from('documentation/city/put_city.yml', methods=['PUT'])
-def put_city(city_id):
+@swag_from('documentation/city/put_all_city.yml', methods=['PUT'])
+def put_all_city(city_id):
     """
     Updates a City
     """
