@@ -16,7 +16,7 @@ Review = review.Review
 class TestReviewDocs(unittest.TestCase):
     """Tests to check the documentation and style of Review class"""
     @classmethod
-    def setUpClass(cls):
+    def setUpClassing(cls):
         """Set up for the doc tests"""
         cls.review_f = inspect.getmembers(Review, inspect.isfunction)
 
@@ -59,7 +59,7 @@ class TestReviewDocs(unittest.TestCase):
 
 class TestReview(unittest.TestCase):
     """Test the Review class"""
-    def test_is_subclass(self):
+    def test_if_sub_class(self):
         """Test if Review is a subclass of BaseModel"""
         review = Review()
         self.assertIsInstance(review, BaseModel)
@@ -105,7 +105,7 @@ class TestReview(unittest.TestCase):
                 self.assertTrue(attr in new_d)
         self.assertTrue("__class__" in new_d)
 
-    def test_to_dict_values(self):
+    def test_to_dictionary_values(self):
         """test that values in dict returned from to_dict are correct"""
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
         r = Review()

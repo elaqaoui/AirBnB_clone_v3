@@ -27,7 +27,7 @@ classes = {"Amenity": Amenity, "City": City, "Place": Place,
 class TestDBStorageDocs(unittest.TestCase):
     """Tests to check the documentation and style of DBStorage class"""
     @classmethod
-    def setUpClass(cls):
+    def setUpClassing(cls):
         """Set up for the doc tests"""
         cls.dbs_f = inspect.getmembers(DBStorage, inspect.isfunction)
 

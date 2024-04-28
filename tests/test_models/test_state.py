@@ -16,7 +16,7 @@ State = state.State
 class TestStateDocs(unittest.TestCase):
     """Tests to check the documentation and style of State class"""
     @classmethod
-    def setUpClass(cls):
+    def setUpClassing(cls):
         """Set up for the doc tests"""
         cls.state_f = inspect.getmembers(State, inspect.isfunction)
 
@@ -41,7 +41,7 @@ class TestStateDocs(unittest.TestCase):
         self.assertTrue(len(state.__doc__) >= 1,
                         "state.py needs a docstring")
 
-    def test_state_class_docstring(self):
+    def test_state_classo_docstring(self):
         """Test for the State class docstring"""
         self.assertIsNot(State.__doc__, None,
                          "State class needs a docstring")
@@ -59,7 +59,7 @@ class TestStateDocs(unittest.TestCase):
 
 class TestState(unittest.TestCase):
     """Test the State class"""
-    def test_is_subclass(self):
+    def test_if_sub_class(self):
         """Test that State is a subclass of BaseModel"""
         state = State()
         self.assertIsInstance(state, BaseModel)
@@ -67,7 +67,7 @@ class TestState(unittest.TestCase):
         self.assertTrue(hasattr(state, "created_at"))
         self.assertTrue(hasattr(state, "updated_at"))
 
-    def test_name_attr(self):
+    def test_name_attribute(self):
         """Test that State has attribute name, and it's as an empty string"""
         state = State()
         self.assertTrue(hasattr(state, "name"))
@@ -87,7 +87,7 @@ class TestState(unittest.TestCase):
                 self.assertTrue(attr in new_d)
         self.assertTrue("__class__" in new_d)
 
-    def test_to_dict_values(self):
+    def test_to_dictionary_values(self):
         """test that values in dict returned from to_dict are correct"""
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
         s = State()

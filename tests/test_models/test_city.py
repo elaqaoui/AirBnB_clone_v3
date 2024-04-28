@@ -16,7 +16,7 @@ City = city.City
 class TestCityDocs(unittest.TestCase):
     """Tests to check the documentation and style of City class"""
     @classmethod
-    def setUpClass(cls):
+    def setUpClassing(cls):
         """Set up for the doc tests"""
         cls.city_f = inspect.getmembers(City, inspect.isfunction)
 
@@ -59,7 +59,7 @@ class TestCityDocs(unittest.TestCase):
 
 class TestCity(unittest.TestCase):
     """Test the City class"""
-    def test_is_subclass(self):
+    def test_if_sub_class(self):
         """Test that City is a subclass of BaseModel"""
         city = City()
         self.assertIsInstance(city, BaseModel)
@@ -67,7 +67,7 @@ class TestCity(unittest.TestCase):
         self.assertTrue(hasattr(city, "created_at"))
         self.assertTrue(hasattr(city, "updated_at"))
 
-    def test_name_attr(self):
+    def test_name_attribute(self):
         """Test that City has attribute name, and it's an empty string"""
         city = City()
         self.assertTrue(hasattr(city, "name"))
@@ -96,7 +96,7 @@ class TestCity(unittest.TestCase):
                 self.assertTrue(attr in new_d)
         self.assertTrue("__class__" in new_d)
 
-    def test_to_dict_values(self):
+    def test_to_dictionary_values(self):
         """test that values in dict returned from to_dict are correct"""
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
         c = City()

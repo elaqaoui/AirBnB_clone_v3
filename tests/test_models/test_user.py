@@ -16,7 +16,7 @@ User = user.User
 class TestUserDocs(unittest.TestCase):
     """Tests to check the documentation and style of User class"""
     @classmethod
-    def setUpClass(cls):
+    def setUpClassing(cls):
         """Set up for the doc tests"""
         cls.user_f = inspect.getmembers(User, inspect.isfunction)
 
@@ -59,7 +59,7 @@ class TestUserDocs(unittest.TestCase):
 
 class TestUser(unittest.TestCase):
     """Test the User class"""
-    def test_is_subclass(self):
+    def test_if_sub_class(self):
         """Test that User is a subclass of BaseModel"""
         user = User()
         self.assertIsInstance(user, BaseModel)
@@ -114,7 +114,7 @@ class TestUser(unittest.TestCase):
                 self.assertTrue(attr in new_d)
         self.assertTrue("__class__" in new_d)
 
-    def test_to_dict_values(self):
+    def test_to_dictionary_values(self):
         """test that values in dict returned from to_dict are correct"""
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
         u = User()

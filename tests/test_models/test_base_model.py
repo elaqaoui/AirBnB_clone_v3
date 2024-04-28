@@ -15,7 +15,7 @@ class TestBaseModelDocs(unittest.TestCase):
     """Tests to check the documentation and style of BaseModel class"""
 
     @classmethod
-    def setUpClass(self):
+    def setUpClassing(self):
         """Set up for docstring tests"""
         self.base_funcs = inspect.getmembers(BaseModel, inspect.isfunction)
 
@@ -27,21 +27,21 @@ class TestBaseModelDocs(unittest.TestCase):
                 errors = pycodestyle.Checker(path).check_all()
                 self.assertEqual(errors, 0)
 
-    def test_module_docstring(self):
+    def test_moduling_docstring(self):
         """Test for the existence of module docstring"""
         self.assertIsNot(module_doc, None,
                          "base_model.py needs a docstring")
         self.assertTrue(len(module_doc) > 1,
                         "base_model.py needs a docstring")
 
-    def test_class_docstring(self):
+    def test_classing_docstring(self):
         """Test for the BaseModel class docstring"""
         self.assertIsNot(BaseModel.__doc__, None,
                          "BaseModel class needs a docstring")
         self.assertTrue(len(BaseModel.__doc__) >= 1,
                         "BaseModel class needs a docstring")
 
-    def test_func_docstrings(self):
+    def test_functions_docstrings(self):
         """Test for the presence of docstrings in BaseModel methods"""
         for func in self.base_funcs:
             with self.subTest(function=func):
@@ -58,7 +58,7 @@ class TestBaseModelDocs(unittest.TestCase):
 
 class TestBaseModel(unittest.TestCase):
     """Test the BaseModel class"""
-    def test_instantiation(self):
+    def test_instantiation_obj(self):
         """Test that object is correctly created"""
         inst = BaseModel()
         self.assertIs(type(inst), BaseModel)
@@ -96,7 +96,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(inst1.created_at, inst2.created_at)
         self.assertNotEqual(inst1.updated_at, inst2.updated_at)
 
-    def test_uuid(self):
+    def test_all_uid(self):
         """Test that id is a valid uuid"""
         inst1 = BaseModel()
         inst2 = BaseModel()
@@ -127,7 +127,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(d['name'], "Holberton")
         self.assertEqual(d['my_number'], 89)
 
-    def test_to_dict_values(self):
+    def test_to_dictionary_values(self):
         """test that values in dict returned from to_dict are correct"""
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
         bm = BaseModel()

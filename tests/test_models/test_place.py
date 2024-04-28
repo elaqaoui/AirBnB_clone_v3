@@ -16,7 +16,7 @@ Place = place.Place
 class TestPlaceDocs(unittest.TestCase):
     """Tests to check the documentation and style of Place class"""
     @classmethod
-    def setUpClass(cls):
+    def setUpClassing(cls):
         """Set up for the doc tests"""
         cls.place_f = inspect.getmembers(Place, inspect.isfunction)
 
@@ -41,7 +41,7 @@ class TestPlaceDocs(unittest.TestCase):
         self.assertTrue(len(place.__doc__) >= 1,
                         "place.py needs a docstring")
 
-    def test_place_class_docstring(self):
+    def test_place_classn_docstring(self):
         """Test for the Place class docstring"""
         self.assertIsNot(Place.__doc__, None,
                          "Place class needs a docstring")
@@ -59,7 +59,7 @@ class TestPlaceDocs(unittest.TestCase):
 
 class TestPlace(unittest.TestCase):
     """Test the Place class"""
-    def test_is_subclass(self):
+    def test_if_sub_class(self):
         """Test that Place is a subclass of BaseModel"""
         place = Place()
         self.assertIsInstance(place, BaseModel)
@@ -85,7 +85,7 @@ class TestPlace(unittest.TestCase):
         else:
             self.assertEqual(place.user_id, "")
 
-    def test_name_attr(self):
+    def test_name_attribute(self):
         """Test Place has attr name, and it's an empty string"""
         place = Place()
         self.assertTrue(hasattr(place, "name"))
@@ -182,7 +182,7 @@ class TestPlace(unittest.TestCase):
                 self.assertTrue(attr in new_d)
         self.assertTrue("__class__" in new_d)
 
-    def test_to_dict_values(self):
+    def test_to_dictionary_values(self):
         """test that values in dict returned from to_dict are correct"""
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
         p = Place()
