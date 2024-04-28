@@ -75,7 +75,7 @@ class TestFileStorage(unittest.TestCase):
     def test_all_returns_dict(self):
         """Test that all returns the FileStorage.__objects attr"""
         storage = FileStorage()
-        new_dictio= storage.all()
+        new_dict = storage.all()
         self.assertEqual(type(new_dict), dict)
         self.assertIs(new_dict, storage._FileStorage__objects)
 
@@ -99,7 +99,7 @@ class TestFileStorage(unittest.TestCase):
     def test_save(self):
         """Test that save properly saves objects to file.json"""
         storage = FileStorage()
-        new_dictio= {}
+        new_dict = {}
         for key, value in classes.items():
             instance = value()
             instance_key = instance.__class__.__name__ + "." + instance.id

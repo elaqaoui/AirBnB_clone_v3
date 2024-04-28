@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" file comnsole """
+""" console """
 
 import cmd
 from datetime import datetime
@@ -33,9 +33,9 @@ class HBNBCommand(cmd.Cmd):
         """Quit command to exit the program"""
         return True
 
-    def parsel_value(self, args):
+    def _key_value_parser(self, args):
         """creates a dictionary from a list of strings"""
-        new_dictio= {}
+        new_dict = {}
         for arg in args:
             if "=" in arg:
                 kvp = arg.split('=', 1)
@@ -61,7 +61,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return False
         if args[0] in classes:
-            new_dictio= self.parsel_value(args[1:])
+            new_dict = self._key_value_parser(args[1:])
             instance = classes[args[0]](**new_dict)
         else:
             print("** class doesn't exist **")
@@ -108,18 +108,18 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """Prints string representations of instances"""
         args = shlex.split(arg)
-        obj_list = []
+        obj_listing = []
         if len(args) == 0:
-            obj_dictio = models.storage.all()
+            obj_dicto = models.storage.all()
         elif args[0] in classes:
-            obj_dictio = models.storage.all(classes[args[0]])
+            obj_dicto = models.storage.all(classes[args[0]])
         else:
             print("** class doesn't exist **")
             return False
-        for key in obj_dictio:
-            obj_list.append(str(obj_dictio[key]))
+        for key in obj_dicto:
+            obj_listing.append(str(obj_dicto[key]))
         print("[", end="")
-        print(", ".join(obj_list), end="")
+        print(", ".join(obj_listing), end="")
         print("]")
 
     def do_update(self, arg):
